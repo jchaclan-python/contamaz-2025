@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>La Vorágine</title>
+        <author>José Eustacio Rivera</author>
+        <editor>El Editor</editor>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>El publicador</publisher>
+        <date>2025</date>
+        <availability><licence>Licencia Creative Commons</licence></availability>
+      </publicationStmt>
+      <sourceDesc>
+        <msDesc>
+          <msIdentifier>
+            <repository></repository>
+            <idno>RM 617 pz 1</idno>
+          </msIdentifier>
+        </msDesc>
+        <listPerson>
+          <head>Lista de personas mencionadas</head>
+          <person xml:id="R.j">
+            <persName xml:lang="lat">
+              <forename>José Eustacio Rivera</forename>
+            </persName>
+            <sex>M</sex>
+            <occupation>Escritor colombiano destacado por su obra poética pero sobre todo por su novela La Vorágine, considerada un clásico de la literatura hispanoamericana.</occupation>
+            <birth when="1888-02-19">
+              <placeName>
+                <settlement type="city">Huila</settlement>
+                <country>Colombia</country>
+              </placeName>
+            </birth>
+            <death when="1928-12-01">
+              <placeName>
+                <settlement type="city">Nueva york</settlement>
+                <country>Estados Unidos</country>
+              </placeName>
+            </death>
+            <listBibl>
+              <bibl>
+                <ref target="https://es.wikipedia.org/wiki/Jos%C3%A9_Eustasio_Rivera">Más información sobre José Eustacio</ref>
+              </bibl>
+            </listBibl>
+          </person>
+        </listPerson>
+        <listPlace>
+          <head>Lista de lugares mencionados</head>
+          <place xml:id="sogamoso">
+            <placeName>Sogamoso</placeName>
+            <location>
+              <geo>5.714663, -72.933907</geo>
+            </location>
+            <listBibl>
+              <bibl>
+                <ref target="https://es.wikipedia.org/wiki/Sogamoso">Mas info: Sogamoso</ref>
+              </bibl>
+            </listBibl>
+          </place>
+          <place xml:id="casanare">
+            <placeName>Casanare</placeName>
+            <location>
+              <geo>5.5000, -71.5000</geo>
+            </location>
+            <listBibl>
+              <bibl>
+                <ref target="https://es.wikipedia.org/wiki/Casanare">Mas info: Casanare</ref>
+              </bibl>
+            </listBibl>
+          </place>
+          <place xml:id="bogotá">
+            <placeName>Bogotá</placeName>
+            <location>
+              <geo>4.7110, -74.0721</geo>
+            </location>
+            <listBibl>
+              <bibl>
+                <ref target="https://es.wikipedia.org/wiki/Bogotá">Mas info: Bogotá</ref>
+              </bibl>
+            </listBibl>
+          </place>
+        </listPlace>
+        <list xml:id="Glosario">
+          <head>Glosario plantas</head>
+          <item xml:id="arecaceae">
+            <term type="main">Arecaceae</term>
+            <term type="synonym">palmera</term>
+            <term type="region">Colombia/Pacífico</term>
+            <term type="usage">alimentación, construcción</term>
+            <term type="dialect">costeño</term>
+            <term type="register">cotidiano</term>
+            <term type="time">prehispánico-actualidad</term>
+            <term type="style">utilitario</term>
+            <term type="freq">alto</term>
+            <p>Árbol de la familia Arecaceae, con tronco delgado y hojas pinnadas o palmadas, utilizado para obtener frutos como el coco o el chontaduro, y cuyas hojas se emplean en techos tradicionales.</p>
+            <listBibl>
+              <bibl>
+                <ref target="https://es.wikipedia.org/wiki/Arecaceae">Más información: Arecaceae</ref>
+              </bibl>
+            </listBibl>
+          </item>
+          <index><term>Glosario colombianismo</term></index>
+          <item xml:id="chinchorro">
+            <term type="main">Chinchorro</term>
+            <term type="synonym">hamaca</term>
+            <term type="region">Colombia/La Guajira</term>
+            <term type="usage">descanso</term>
+            <term type="ethnic">wayuu</term>
+            <term type="dialect">guajiro</term>
+            <term type="register">tradicional</term>
+            <term type="time">prehispánico-actualidad</term>
+            <term type="style">simbolico</term>
+            <term type="freq">alto</term>
+            <p>Hamaca tejida manualmente con hilos de algodón o fibras de cumare,         de trama abierta y colores vivos, usada para dormir y en rituales funerarios wayúu.</p>
+            <listBibl>
+              <bibl>
+                <ref target="https://es.wikipedia.org/wiki/Hamaca">Más información: Chinchorro</ref>
+              </bibl>
+            </listBibl>
+          </item>
+        </list>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="esp">Español</language>
+      </langUsage>
+    </profileDesc>
+  </teiHeader>
+  <facsimile>
+    <graphic url="rm_lavoragine_pieza01_003.jpg"/>
+    <surface xml:id="RMvoragine_surf_1r" corresp="#RMvoragine_fol_1r" ulx="0" uly="0" lrx="2375" lry="5090">
+      <zone xml:id="RMvoragine_line_1r_01" corresp="#RMvoragine_lb_1r_01" ulx="478" uly="0" lrx="2333" lry="259" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_02" corresp="#RMvoragine_lb_1r_02" ulx="1678" uly="259" lrx="2106" lry="467" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_03" corresp="#RMvoragine_lb_1r_03" ulx="1085" uly="422" lrx="2319" lry="610" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_04" corresp="#RMvoragine_lb_1r_04" ulx="1182" uly="559" lrx="2356" lry="715" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_05" corresp="#RMvoragine_lb_1r_05" ulx="346" uly="623" lrx="2319" lry="879" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_06" corresp="#RMvoragine_lb_1r_06" ulx="261" uly="815" lrx="2333" lry="1074" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_07" corresp="#RMvoragine_lb_1r_07" ulx="243" uly="990" lrx="2359" lry="1169" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_08" corresp="#RMvoragine_lb_1r_08" ulx="243" uly="1121" lrx="2362" lry="1319" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_09" corresp="#RMvoragine_lb_1r_09" ulx="245" uly="1269" lrx="2359" lry="1480" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_10" corresp="#RMvoragine_lb_1r_10" ulx="243" uly="1401" lrx="2356" lry="1604" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_11" corresp="#RMvoragine_lb_1r_11" ulx="243" uly="1554" lrx="2356" lry="1789" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_12" corresp="#RMvoragine_lb_1r_12" ulx="243" uly="1684" lrx="2327" lry="1934" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_13" corresp="#RMvoragine_lb_1r_13" ulx="243" uly="1837" lrx="2364" lry="2069" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_14" corresp="#RMvoragine_lb_1r_14" ulx="261" uly="1974" lrx="2333" lry="2224" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_15" corresp="#RMvoragine_lb_1r_15" ulx="259" uly="2127" lrx="2356" lry="2359" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_16" corresp="#RMvoragine_lb_1r_16" ulx="259" uly="2261" lrx="2359" lry="2470" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_17" corresp="#RMvoragine_lb_1r_17" ulx="274" uly="2412" lrx="1929" lry="2623" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_18" corresp="#RMvoragine_lb_1r_18" ulx="351" uly="2562" lrx="1932" lry="2889" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_19" corresp="#RMvoragine_lb_1r_19" ulx="1084" uly="2839" lrx="1673" lry="3042" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_20" corresp="#RMvoragine_lb_1r_20" ulx="272" uly="3029" lrx="2333" lry="3335" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_21" corresp="#RMvoragine_lb_1r_21" ulx="261" uly="3254" lrx="2362" lry="3449" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_22" corresp="#RMvoragine_lb_1r_22" ulx="261" uly="3393" lrx="2285" lry="3594" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_23" corresp="#RMvoragine_lb_1r_23" ulx="251" uly="3539" lrx="2330" lry="3773" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_24" corresp="#RMvoragine_lb_1r_24" ulx="261" uly="3668" lrx="2338" lry="3876" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_25" corresp="#RMvoragine_lb_1r_25" ulx="267" uly="3826" lrx="2312" lry="4050" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_26" corresp="#RMvoragine_lb_1r_26" ulx="274" uly="3961" lrx="2338" lry="4188" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_27" corresp="#RMvoragine_lb_1r_27" ulx="282" uly="4106" lrx="2341" lry="4335" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_28" corresp="#RMvoragine_lb_1r_28" ulx="267" uly="4254" lrx="2338" lry="4441" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_29" corresp="#RMvoragine_lb_1r_29" ulx="272" uly="4394" lrx="2351" lry="4618" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_30" corresp="#RMvoragine_lb_1r_30" ulx="274" uly="4531" lrx="2364" lry="4750" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_31" corresp="#RMvoragine_lb_1r_31" ulx="261" uly="4684" lrx="1673" lry="4874" rend="visible" rendition="Line"/>
+      <zone xml:id="RMvoragine_line_1r_32" corresp="#RMvoragine_lb_1r_32" ulx="464" uly="4752" lrx="2314" lry="5064" rend="visible" rendition="Line"/>
+    </surface>
+    <graphic url="rm_lavoragine_pieza01_174.jpg"/>
+    <surface xml:id="RMvoragine_surf_174r" corresp="#RMvoragine_fol_174r" ulx="0" uly="0" lrx="2375" lry="5090">
+       <zone xml:id="RMvoragine_line_174r_01" corresp="#RMvoragine_lb_174r_01" ulx="478" uly="0" lrx="2333" lry="259" rend="visible" rendition="Line"/>
+    </surface>
+     
+  </facsimile>
+  <text>
+    <body>
+      <div type="chapter">
+        <pb n="f. 1r" xml:id="RMvoragine_fol_1r" facs="data/images/single/rm_lavoragine_pieza01_003.jpg"/>
+        <div type="heading">
+          <head rend="bold">
+            <lb n="1" xml:id="RMvoragine_lb_1r_01" facs="#RMvoragine_line_1r_01"/>La Vorágine <persName ref="#R.j">José Eustacio Rivera</persName>
+            <lb n="2" xml:id="RMvoragine_lb_1r_02" facs="#RMvoragine_line_1r_02"/>novela =<lb n="3" xml:id="RMvoragine_lb_1r_03" facs="#RMvoragine_line_1r_03"/>
+            <placeName ref="#sogamoso">Sogamoso</placeName>, abril 22, 1922<lb n="4" xml:id="RMvoragine_lb_1r_04" facs="#RMvoragine_line_1r_04"/>
+            <placeName ref="#rionegro">Rionegro</placeName>, <placeName ref="#orinoco">Orinoco</placeName>, <placeName ref="#guaviare">guavia-</placeName>
+            <lb n="5" xml:id="RMvoragine_lb_1r_05" facs="#RMvoragine_line_1r_05"/>
+            <placeName ref="#guaviare">re</placeName>, <placeName ref="#guainía">Guainía</placeName>, <placeName ref="#casiquiare">casiquiare</placeName>, <placeName ref="#amazonas">amazonas</placeName>, 1923</head>
+          <p>
+            <lb n="6" xml:id="RMvoragine_lb_1r_06" facs="#RMvoragine_line_1r_06"/>"Los que en un tiempo creyeron que mi in-
+            <lb n="7" xml:id="RMvoragine_lb_1r_07" facs="#RMvoragine_line_1r_07"/>teligencia irradiaria extraordianariamente, como
+            <lb n="8" xml:id="RMvoragine_lb_1r_08" facs="#RMvoragine_line_1r_08"/>una aureola de mi juventud; los que se ol-
+            <lb n="9" xml:id="RMvoragine_lb_1r_09" facs="#RMvoragine_line_1r_09"/>vidaron de mí apenas mi planta descendió al
+            <lb n="10" xml:id="RMvoragine_lb_1r_10" facs="#RMvoragine_line_1r_10"/>infortunio; los que al recordarme alguna vez
+            <lb n="11" xml:id="RMvoragine_lb_1r_11" facs="#RMvoragine_line_1r_11"/>piensen en mi fracaso y se pregunten por qué
+            <lb n="12" xml:id="RMvoragine_lb_1r_12" facs="#RMvoragine_line_1r_12"/>no fuí lo que pude haber sido, sepan que el
+            <lb n="13" xml:id="RMvoragine_lb_1r_13" facs="#RMvoragine_line_1r_13"/>destino implacable me desarraigó de la pros-
+            <lb n="14" xml:id="RMvoragine_lb_1r_14" facs="#RMvoragine_line_1r_14"/>peridad incipiente y me lanzó a las pam-
+            <lb n="15" xml:id="RMvoragine_lb_1r_15" facs="#RMvoragine_line_1r_15"/>pas, para que ambulara vagabundo, como
+            <lb n="16" xml:id="RMvoragine_lb_1r_16" facs="#RMvoragine_line_1r_16"/>los vientos, y me extinguiera como ellos, sin
+            <lb n="17" xml:id="RMvoragine_lb_1r_17" facs="#RMvoragine_line_1r_17"/>dejar mas que ruido y desolación"
+            <lb n="18" xml:id="RMvoragine_lb_1r_18" facs="#RMvoragine_line_1r_18"/>
+            <hi rend="underline">(Fragmento de una carta de arturo Cova</hi>)</p>
+        </div>
+        <div type="heading">
+          <head rend="bold">
+            <lb n="19" xml:id="RMvoragine_lb_1r_19" facs="#RMvoragine_line_1r_19"/>
+            <hi rend="underline">
+              <choice>
+                <abbr>1ª</abbr>
+                <expan>Primera</expan>
+              </choice>
+            </hi>
+            <hi rend="underline"> PARTE</hi>
+          </head>
+          <p>
+            <lb n="20" xml:id="RMvoragine_lb_1r_20" facs="#RMvoragine_line_1r_20"/>
+            <roleName>Arturo Cova</roleName> Antes que me hubiera enamorado profundamente
+            <lb n="21" xml:id="RMvoragine_lb_1r_21" facs="#RMvoragine_line_1r_21"/>de mujer alguna, jugué mi corazón al azar
+            <lb n="22" xml:id="RMvoragine_lb_1r_22" facs="#RMvoragine_line_1r_22"/>y me lo ganó la Violencia. Nada supe
+            <lb n="23" xml:id="RMvoragine_lb_1r_23" facs="#RMvoragine_line_1r_23"/>del deliquio embriagante, ni de la confiden
+            <lb n="24" xml:id="RMvoragine_lb_1r_24" facs="#RMvoragine_line_1r_24"/>cia sentimental, ni de la zozobra de las mira
+            <lb n="25" xml:id="RMvoragine_lb_1r_25" facs="#RMvoragine_line_1r_25"/>das cobardes. Mas que el enamorado, fui
+            <lb n="26" xml:id="RMvoragine_lb_1r_26" facs="#RMvoragine_line_1r_26"/>siempre el dominador, cuyos labios no cono-
+            <lb n="27" xml:id="RMvoragine_lb_1r_27" facs="#RMvoragine_line_1r_27"/>cieron la súplica. Con todo, <del>busque siempre</del>
+            <add place="above">ambicionaba</add>
+            <lb n="28" xml:id="RMvoragine_lb_1r_28" facs="#RMvoragine_line_1r_28"/>el don divino del amor idea, que me encen-
+            <lb n="29" xml:id="RMvoragine_lb_1r_29" facs="#RMvoragine_line_1r_29"/>diera espiritualmente, para que mi alma des-
+            <lb n="30" xml:id="RMvoragine_lb_1r_30" facs="#RMvoragine_line_1r_30"/>tellara sobre mi cuerpo como la llama so-
+            <lb n="31" xml:id="RMvoragine_lb_1r_31" facs="#RMvoragine_line_1r_31"/>bre el leño que la alimenta.
+            <lb n="32" xml:id="RMvoragine_lb_1r_32" facs="#RMvoragine_line_1r_32"/>Cuando los ojos de Alicia me trajeron</p>
+        </div>
+
+
+<pb n="f. 174r" xml:id="RMvoragine_fol_174r" facs="data/images/single/rm_lavoragine_pieza01_174.jpg"/>
+     
+            <lb n="1" xml:id="RMvoragine_lb_174r_01" facs="#RMvoragine_line_174r_01"/>Nota: Este cuaderno viajó conmigo por todo los
+            <lb n="2" xml:id="RMvoragine_lb_174r_02" facs="#RMvoragine_line_174r_02"/>rios Orinoco, Atabapo            
+        
+       
+      
+
+
+
+      </div> <!-- Fin DIV CHAPTER -->
+    </body>
+  </text>
+</TEI>
