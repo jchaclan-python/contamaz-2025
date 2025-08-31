@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lector EPUB - La Vorágine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #f5f5f5;
+        }
+
+        .epub-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .controls {
+            background: #34495e;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .file-input {
+            margin-right: 1rem;
+        }
+
+        .file-input input[type="file"] {
+            display: none;
+        }
+
+        .file-label {
+            background: #27ae60;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .file-label:hover {
+            background: #219a52;
+        }
+
+        .progress-container {
+            background: #ecf0f1;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            background: #bdc3c7;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem auto;
+            width: 300px;
+        }
+
+        .progress-fill {
+            background: #3498db;
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .chapter-info {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        .reader-container {
+            flex: 1;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #viewer {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border: none;
+        }
+
+        .navigation-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0);
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+
+        .navigation-overlay:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .nav-left {
+            left: 0;
+        }
+
+        .nav-right {
+            right: 0;
+        }
+
+        .nav-arrow {
+            font-size: 24px;
+            color: #34495e;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .navigation-overlay:hover .nav-arrow {
+            opacity: 1;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: white;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #ecf0f1;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #e74c3c;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                padding: 0.25rem;
+                gap: 0.5rem;
+            }
+            
+            .btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 12px;
+            }
+            
+            .progress-bar {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="epub-container">
+        <div class="header">
+            <h1>📚 Lector EPUB - La Vorágine</h1>
+        </div>
+
+        <div class="controls">
+            <button class="btn" id="prev-btn" disabled>◀ Anterior</button>
+            <button class="btn" id="next-btn" disabled>Siguiente ▶</button>
+            
+            <button class="btn" id="toc-btn" disabled>📋 Índice</button>
+            <button class="btn" id="font-smaller">A-</button>
+            <button class="btn" id="font-bigger">A+</button>
+            <button class="btn" id="reload-btn">🔄 Recargar</button>
+        </div>
+
+        <div class="progress-container" id="progress-container" style="display: none;">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="chapter-info" id="chapter-info">Cargando...</div>
+        </div>
+
+        <div class="reader-container">
+            <div class="navigation-overlay nav-left" id="nav-left">
+                <span class="nav-arrow">◀</span>
+            </div>
+            
+            <div id="viewer">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <div>Cargando "La Vorágine"...</div>
+                    <p style="color: #7f8c8d; max-width: 400px; text-align: center; line-height: 1.5;">
+                        José Eustasio Rivera (1924)
+                    </p>
+                </div>
+            </div>
+            
+            <div class="navigation-overlay nav-right" id="nav-right">
+                <span class="nav-arrow">▶</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Epub.js desde CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+
+    <script>
+        let book;
+        let rendition;
+        let currentLocation;
+
+        // Elementos del DOM
+        const viewer = document.getElementById('viewer');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const tocBtn = document.getElementById('toc-btn');
+        const fontSmallerBtn = document.getElementById('font-smaller');
+        const fontBiggerBtn = document.getElementById('font-bigger');
+        const reloadBtn = document.getElementById('reload-btn');
+        const progressContainer = document.getElementById('progress-container');
+        const progressFill = document.getElementById('progress-fill');
+        const chapterInfo = document.getElementById('chapter-info');
+        const navLeft = document.getElementById('nav-left');
+        const navRight = document.getElementById('nav-right');
+
+        // Variables para el control de fuente
+        let currentFontSize = 100;
+
+        // Event Listeners
+        fileInput.addEventListener('change', loadEpub);
+        prevBtn.addEventListener('click', () => rendition && rendition.prev());
+        nextBtn.addEventListener('click', () => rendition && rendition.next());
+        navLeft.addEventListener('click', () => rendition && rendition.prev());
+        navRight.addEventListener('click', () => rendition && rendition.next());
+        
+        fontSmallerBtn.addEventListener('click', () => changeFontSize(-10));
+        fontBiggerBtn.addEventListener('click', () => changeFontSize(10));
+        
+        tocBtn.addEventListener('click', showTableOfContents);
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (!rendition) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    rendition.prev();
+                    break;
+                case 'ArrowRight':
+                    rendition.next();
+                    break;
+            }
+        });
+
+        function loadEpub() {
+            // Mostrar estado de carga
+            viewer.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <div>Cargando "La Vorágine"...</div>
+                    <p style="color: #7f8c8d;">José Eustasio Rivera (1924)</p>
+                </div>
+            `;
+
+            try {
+                // Crear el libro desde la URL del archivo
+                book = ePub('./voragine.epub');
+                
+                // Crear la representación
+                rendition = book.renderTo(viewer, {
+                    width: '100%',
+                    height: '100%',
+                    spread: 'none'
+                });
+
+                // Mostrar el libro
+                rendition.display().then(() => {
+                    console.log('La Vorágine cargada exitosamente');
+                    enableControls();
+                    progressContainer.style.display = 'block';
+                }).catch((error) => {
+                    console.error('Error mostrando el libro:', error);
+                    showError('Error mostrando "La Vorágine". Verifica que el archivo voragine.epub esté en el mismo directorio.');
+                });
+
+                // Configurar eventos del libro
+                setupBookEvents();
+
+            } catch (error) {
+                console.error('Error cargando La Vorágine:', error);
+                showError('Error cargando "La Vorágine". Asegúrate de que el archivo "voragine.epub" esté en el mismo directorio que este archivo HTML.');
+            }
+        }
+
+        function setupBookEvents() {
+            // Actualizar progreso y información cuando cambie la ubicación
+            rendition.on('relocated', (location) => {
+                currentLocation = location;
+                updateProgress(location);
+                updateChapterInfo(location);
+            });
+
+            // Configurar estilos
+            rendition.themes.default({
+                'body': {
+                    'font-family': 'Georgia, serif',
+                    'line-height': '1.6',
+                    'margin': '0 2rem',
+                    'color': '#2c3e50'
+                },
+                'p': {
+                    'text-align': 'justify',
+                    'margin-bottom': '1rem'
+                }
+            });
+
+            book.ready.then(() => {
+                const title = book.package.metadata.title || 'La Vorágine';
+                const author = book.package.metadata.creator || 'José Eustasio Rivera';
+                console.log(`Libro listo: ${title} por ${author}`);
+                
+                // Actualizar el título de la página
+                document.title = `${title} - Lector EPUB`;
+            }).catch((error) => {
+                console.error('Error obteniendo metadatos:', error);
+            });
+        }
+
+        function enableControls() {
+            prevBtn.disabled = false;
+            nextBtn.disabled = false;
+            tocBtn.disabled = false;
+        }
+
+        function updateProgress(location) {
+            if (location && location.start) {
+                const progress = book.locations.percentageFromCfi(location.start.cfi) * 100;
+                progressFill.style.width = progress + '%';
+            }
+        }
+
+        function updateChapterInfo(location) {
+            if (!book.navigation) return;
+
+            book.navigation.get(location.start.cfi).then((chapter) => {
+                if (chapter) {
+                    chapterInfo.textContent = chapter.label || 'Capítulo actual';
+                } else {
+                    chapterInfo.textContent = 'Leyendo...';
+                }
+            }).catch(() => {
+                chapterInfo.textContent = 'Leyendo...';
+            });
+        }
+
+        function changeFontSize(delta) {
+            if (!rendition) return;
+            
+            currentFontSize += delta;
+            currentFontSize = Math.max(50, Math.min(200, currentFontSize));
+            
+            rendition.themes.fontSize(currentFontSize + '%');
+        }
+
+        function showTableOfContents() {
+            if (!book || !book.navigation) return;
+
+            book.loaded.navigation.then((nav) => {
+                let tocHtml = '<div style="max-height: 400px; overflow-y: auto; padding: 1rem;">';
+                tocHtml += '<h3 style="margin-bottom: 1rem;">Tabla de Contenidos</h3>';
+                
+                nav.toc.forEach((chapter, index) => {
+                    tocHtml += `<div style="margin-bottom: 0.5rem;">
+                        <a href="#" onclick="goToChapter('${chapter.href}'); return false;" 
+                           style="color: #3498db; text-decoration: none; display: block; padding: 0.25rem;">
+                            ${chapter.label}
+                        </a>
+                    </div>`;
+                });
+                
+                tocHtml += '</div>';
+                
+                // Mostrar en un modal simple
+                const modal = document.createElement('div');
+                modal.innerHTML = `
+                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+                        <div style="background: white; border-radius: 8px; max-width: 500px; width: 90%;">
+                            ${tocHtml}
+                            <div style="padding: 1rem; text-align: center; border-top: 1px solid #eee;">
+                                <button onclick="this.closest('div').parentElement.remove()" class="btn">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            });
+        }
+
+        function goToChapter(href) {
+            if (rendition) {
+                rendition.display(href);
+                // Cerrar modal
+                const modal = document.querySelector('div[style*="position: fixed"]').parentElement;
+                if (modal) modal.remove();
+            }
+        }
+
+        function showError(message) {
+            viewer.innerHTML = `
+                <div class="error">
+                    ⚠️ ${message}
+                </div>
+            `;
+        }
+
+        // Función global para navegación desde tabla de contenidos
+        window.goToChapter = goToChapter;
+    </script>
+</body>
+</html>
